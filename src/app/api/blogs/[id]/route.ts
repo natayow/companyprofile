@@ -9,12 +9,12 @@ interface BackendlessError extends Error {
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
   try {
-    console.log('Fetching blog with ID:', params.id);
+    console.log('Fetching blog with ID:', context.params.id);
     
-    if (!params.id) {
+    if (!context.params.id) {
       console.error('No ID provided');
       return NextResponse.json(
         { error: "No blog ID provided" },
@@ -23,7 +23,7 @@ export async function GET(
     }
 
     const queryBuilder = Backendless.DataQueryBuilder.create();
-    queryBuilder.setWhereClause(`objectId = '${params.id}'`);
+    queryBuilder.setWhereClause(`objectId = '${context.params.id}'`);
     const blogs = await Backendless.Data.of('Blogs').find(queryBuilder);
     const blog = blogs[0];
     console.log('Blog data:', blog);
