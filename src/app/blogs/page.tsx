@@ -1,16 +1,19 @@
 "use client";
 import axios from "axios";
 import Link from "next/link";
+import { BlogData, BlogsResponse } from "@/types/blog";
 import React, { useEffect, useMemo, useState } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
 
 export default function Blogs() {
-  const [blogsData, setProductsData] = useState<any[]>([]);
+  const [blogsData, setProductsData] = useState<BlogData[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
 
   const getProductsData = async () => {
-    const response: any = await axios.get("http://localhost:3000/api/blogs");
+    const response = await axios.get<BlogsResponse>(
+      "http://localhost:3000/api/blogs"
+    );
     setProductsData(response.data.data);
   };
 

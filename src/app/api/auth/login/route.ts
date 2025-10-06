@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Backendless from '@/lib/backendless';
 
+interface BackendlessError extends Error {
+  code?: number;
+  message: string;
+}
+
 export async function POST(req: NextRequest) {
   try {
     const data = await req.json();
@@ -32,22 +37,25 @@ export async function POST(req: NextRequest) {
       success: true,
       data: response
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    // Type guard to ensure error is BackendlessError
+    const backendlessError = error as BackendlessError;
+    
     // Log the actual error for debugging
-    console.error('Login error:', error);
+    console.error('Login error:', backendlessError);
     
     // Format error response
     const errorResponse = {
       success: false,
-      message: error.message || 'Authentication failed',
+      message: backendlessError.message || 'Authentication failed',
       details: {
-        code: error.code,
-        message: error.message
+        code: backendlessError.code,
+        message: backendlessError.message
       }
     };
 
     // Handle different error cases
-    switch (error.code) {
+    switch (backendlessError.code) {
       case 3003:
         return NextResponse.json({
           ...errorResponse,

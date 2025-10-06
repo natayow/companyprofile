@@ -3,6 +3,11 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
+interface FetchError extends Error {
+  name: string;
+  message: string;
+}
+
 type RUUser = {
   name: { first: string; last: string };
   picture: { large: string };
@@ -39,9 +44,10 @@ export default function TeamSection({ count = 6 }: { count?: number }) {
         if (!res.ok) throw new Error(`Request failed: ${res.status}`);
         const data = await res.json();
         setUsers(data.results as RUUser[]);
-      } catch (e: any) {
-        if (e.name !== "AbortError")
-          setErr(e.message || "Failed to load team.");
+      } catch (e: unknown) {
+        const error = e as FetchError;
+        if (error.name !== "AbortError")
+          setErr(error.message || "Failed to load team.");
       } finally {
         setLoading(false);
       }

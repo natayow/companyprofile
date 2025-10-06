@@ -1,5 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import Backendless from "@/lib/backendless";
+import { BlogData } from "@/types/blog";
+
+interface BackendlessError extends Error {
+  code?: number;
+  message: string;
+}
 
 export async function GET(
   request: NextRequest,
@@ -30,10 +36,11 @@ export async function GET(
     }
 
     return NextResponse.json({ data: blog }, { status: 200 });
-  } catch (error: any) {
-    console.error('Error fetching blog:', error);
+  } catch (error: unknown) {
+    const backendlessError = error as BackendlessError;
+    console.error('Error fetching blog:', backendlessError);
     return NextResponse.json(
-      { error: "Error fetching blog", details: error.message },
+      { error: "Error fetching blog", details: backendlessError.message },
       { status: 500 }
     );
   }

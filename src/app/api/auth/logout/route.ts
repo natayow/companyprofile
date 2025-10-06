@@ -1,6 +1,11 @@
 import { NextResponse } from 'next/server';
 import Backendless from '@/lib/backendless';
 
+interface BackendlessError extends Error {
+  code?: number;
+  message: string;
+}
+
 export async function POST() {
   try {
     await Backendless.UserService.logout();
@@ -9,10 +14,11 @@ export async function POST() {
       message: 'Successfully logged out',
       success: true
     });
-  } catch (error: any) {
-    console.error('Logout error:', error);
+  } catch (error: unknown) {
+    const backendlessError = error as BackendlessError;
+    console.error('Logout error:', backendlessError);
     return NextResponse.json({
-      message: error?.message || 'Error during logout',
+      message: backendlessError.message || 'Error during logout',
       success: false
     }, { status: 500 });
   }

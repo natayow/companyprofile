@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Backendless from '@/lib/backendless';
 
+interface BackendlessError extends Error {
+  code?: number;
+  message: string;
+}
+
 export async function GET() {
   try {
     // Check if there's a current user session and ensure it's valid
@@ -29,10 +34,11 @@ export async function GET() {
       isLoggedIn: false,
       user: null,
     });
-  } catch (error: any) {
-    console.error('Session check error:', error);
+  } catch (error: unknown) {
+    const backendlessError = error as BackendlessError;
+    console.error('Session check error:', backendlessError);
     return NextResponse.json({
-      message: error?.message || 'Failed to check session',
+      message: backendlessError.message || 'Failed to check session',
       isLoggedIn: false,
       user: null,
     }, { status: 500 });
@@ -81,9 +87,10 @@ export async function POST(req: NextRequest) {
       isLoggedIn: true,
       user: user,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const backendlessError = error as BackendlessError;
     return NextResponse.json({
-      message: error?.message || 'Failed to login',
+      message: backendlessError.message || 'Failed to login',
       isLoggedIn: false,
     }, { status: 500 });
   }

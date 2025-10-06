@@ -1,12 +1,13 @@
 "use client";
 import axios from "axios";
+import { BlogData, BlogResponse } from "@/types/blog";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function BlogDetail() {
   const params = useParams();
   const id = Array.isArray(params.id) ? params.id[0] : params.id;
-  const [blog, setBlog] = useState<any>(null);
+  const [blog, setBlog] = useState<BlogData | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -31,13 +32,17 @@ export default function BlogDetail() {
         }
 
         setBlog(response.data.data);
-      } catch (error: any) {
+      } catch (error) {
+        const err = error as {
+          message: string;
+          response?: { data?: any; status?: number };
+        };
         console.error("Error fetching blog:", {
-          message: error.message,
-          response: error.response?.data,
-          details: error.response?.data?.details,
-          status: error.response?.status,
-          error: error,
+          message: err.message,
+          response: err.response?.data,
+          details: err.response?.data?.details,
+          status: err.response?.status,
+          error: err,
         });
       } finally {
         setLoading(false);
