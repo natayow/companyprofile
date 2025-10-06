@@ -33,10 +33,17 @@ export default function BlogDetail() {
 
         setBlog(response.data.data);
       } catch (error) {
-        const err = error as {
+        interface ErrorResponse {
           message: string;
-          response?: { data?: any; status?: number };
-        };
+          response?: {
+            data?: {
+              error?: string;
+              details?: string;
+            };
+            status?: number;
+          };
+        }
+        const err = error as ErrorResponse;
         console.error("Error fetching blog:", {
           message: err.message,
           response: err.response?.data,
