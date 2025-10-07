@@ -4,7 +4,8 @@ import { getDefinedNamedExports } from "next/dist/build/utils";
 
 export async function GET(req: NextRequest){
     try {
-        const blogsData = await Backendless.Data.of('Blogs').find();
+const queryBuilder = Backendless.DataQueryBuilder.create().setPageSize(100);
+const blogsData = await Backendless.Data.of('Blogs').find(queryBuilder);
     
     return NextResponse.json(
         {
