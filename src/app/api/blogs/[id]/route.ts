@@ -9,7 +9,7 @@ interface BackendlessError extends Error {
 
 export async function GET(
   _: NextRequest, 
-  { params }: { params: { id: string } }
+  { params }: any 
 ) {
   try {
     const { id } = await params;
