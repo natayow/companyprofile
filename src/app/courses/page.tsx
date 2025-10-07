@@ -30,8 +30,7 @@ export default function Courses() {
 
             <div className="flex justify-between items-center">
               <p className="text-[#969696] font-extralight text-sm md:text-base">
-                Build responsive, modern websites with solid HTML and CSS
-                foundations.
+                Build responsive websites with solid HTML and CSS foundations.
               </p>
             </div>
             <button className="btn btn-primary w-full mt-3">Buy Now</button>
@@ -52,7 +51,7 @@ export default function Courses() {
                 Photography
               </h2>
               <p className="text-right text-[#545BE8] text-base md:text-lg font-extrabold">
-                $19.99
+                $19
               </p>
             </div>
 
@@ -86,8 +85,7 @@ export default function Courses() {
 
             <div className="flex justify-between items-center">
               <p className="text-[#969696] font-extralight text-sm md:text-base">
-                Create interactive, dynamic websites with essential JavaScript
-                skills.
+                Create interactive websites with essential JavaScript skills.
               </p>
             </div>
             <button className="btn btn-primary w-full mt-3">Buy Now</button>
