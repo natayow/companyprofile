@@ -154,23 +154,32 @@ export default function CreateBlog() {
                 </p>
               )}
             </fieldset>
-            <fieldset className="fieldset w-full">
+            <fieldset className="fieldset">
               <legend className="fieldset-legend text-black text-sm font-medium mb-2">
                 Content Body
               </legend>
+
               <textarea
-                className="input w-full p-3 h-32 md:h-48 bg-white border border-gray-300 rounded-lg text-gray-500 focus:border-[#545BE8] focus:ring-1 focus:ring-[#545BE8] transition-all resize-y"
+                className="textarea w-full p-3 h-32 md:h-48 bg-white border border-gray-300 rounded-lg text-gray-700 focus:border-[#545BE8] focus:ring-1 focus:ring-[#545BE8] transition-all resize-y whitespace-pre-wrap break-words overflow-x-hidden"
                 placeholder="Type here"
                 name="body"
+                wrap="soft"
                 onChange={formik?.handleChange}
+                onInput={(e) => {
+                  const el = e.currentTarget;
+                  el.style.height = "auto";
+                  el.style.height = `${el.scrollHeight}px`;
+                }}
                 value={formik?.values?.body}
-              ></textarea>
+              />
+
               {formik?.errors?.body && formik?.touched?.body && (
                 <p id="feedback" className="text-red-500 text-sm mt-1">
                   {formik?.errors?.body}
                 </p>
               )}
             </fieldset>
+
             <button className="w-full sm:w-auto px-6 py-3 bg-[#545BE8] text-white font-medium rounded-lg hover:bg-[#444bd4] transition-all focus:ring-2 focus:ring-[#545BE8] focus:ring-offset-2">
               Create Blog
             </button>

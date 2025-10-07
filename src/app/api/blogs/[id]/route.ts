@@ -8,11 +8,11 @@ interface BackendlessError extends Error {
 }
 
 export async function GET(
-  _: NextRequest,
-  { params }: { params: { id: string } }
+  _: NextRequest, 
+  context: { params: { id: string } }
 ) {
   try {
-    const { id } = await params;
+    const { id } = await context.params;
     console.log('Fetching blog with ID:', id);
     
     if (!id) {
