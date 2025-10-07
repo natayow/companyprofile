@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -26,9 +27,9 @@ export default function Hero() {
             small, grow fast, and learn confidently.
           </p>
           <div className="flex justify-center md:justify-start">
-            <button className="btn btn-primary w-full md:w-auto">
+            <Link href="/register" className="btn btn-primary w-full md:w-auto">
               Register
-            </button>
+            </Link>
           </div>
         </div>
         <div className="relative w-[300px] h-[300px] md:w-[450px] md:h-[450px] mt-8 md:mt-0">

@@ -21,9 +21,7 @@ export default function BlogDetail() {
       console.log("Fetching blog with ID:", id);
 
       try {
-        const response = await axios.get(
-          `http://localhost:3000/api/blogs/${id}`
-        );
+        const response = await axios.get(`/api/blogs/${id}`);
 
         console.log("API Response:", response.data);
 

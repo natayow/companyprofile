@@ -11,9 +11,7 @@ export default function Blogs() {
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
 
   const getProductsData = async () => {
-    const response = await axios.get<BlogsResponse>(
-      "http://localhost:3000/api/blogs"
-    );
+    const response = await axios.get<BlogsResponse>("/api/blogs");
     setProductsData(response.data.data);
   };
 
