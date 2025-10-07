@@ -7,19 +7,12 @@ interface BackendlessError extends Error {
   message: string;
 }
 
-type Props = {
-  params: {
-    id: string
-  }
-}
-
 export async function GET(
   _: NextRequest,
-  { params }: Props
+  { params }: { params: { id: string } }
 ) {
   try {
-    // Properly await the dynamic parameter
-    const id = await Promise.resolve(params.id);
+    const { id } = await params;
     console.log('Fetching blog with ID:', id);
     
     if (!id) {
