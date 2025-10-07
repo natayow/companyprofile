@@ -21,7 +21,7 @@ export default function Benefits() {
           </p>
         </div>
         <div className="w-full lg:w-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:pr-9">
+          <div className="grid grid-cols-1 mb-6 md:mb-6 md:grid-cols-2 lg:mt-6 lg:grid-cols-3 gap-4 lg:pr-9">
             <div className="bg-[#545BE8] px-6 py-11 flex flex-col gap-3 rounded-lg">
               <div className="bg-white rounded-full w-9 h-9 flex items-center justify-center">
                 <HiOutlineUser className="text-[#F0C932] text-xl" />

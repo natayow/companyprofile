@@ -17,7 +17,7 @@ export default function BestCourses() {
                   loading="lazy"
                 />
               </figure>
-              <div className="card-body">
+              <div className="card-body h-full">
                 <div className="flex justify-between items-center space-between">
                   {" "}
                   <h2 className="card-title text-lg text-black">HTML & CSS</h2>
@@ -34,7 +34,7 @@ export default function BestCourses() {
                 </div>
               </div>
             </div>
-            <div className="card bg-white w-full shadow-sm">
+            <div className="card bg-white w-full  shadow-sm">
               <figure>
                 <img
                   className="w-full h-37 object-cover"
@@ -43,12 +43,12 @@ export default function BestCourses() {
                   loading="lazy"
                 />
               </figure>
-              <div className="card-body">
+              <div className="card-body h-full">
                 <div className="flex justify-between items-center space-between">
                   {" "}
                   <h2 className="card-title text-black">Photography</h2>
                   <p className="text-right text-[#545BE8] text-lg font-extrabold">
-                    $19.99
+                    $19
                   </p>
                 </div>
 
@@ -69,7 +69,7 @@ export default function BestCourses() {
                   loading="lazy"
                 />
               </figure>
-              <div className="card-body">
+              <div className="card-body h-full">
                 <div className="flex justify-between items-center space-between">
                   {" "}
                   <h2 className="card-title text-black">JavaScript</h2>
@@ -95,7 +95,7 @@ export default function BestCourses() {
                   loading="lazy"
                 />
               </figure>
-              <div className="card-body">
+              <div className="card-body h-full">
                 <div className="flex justify-between items-center space-between">
                   {" "}
                   <h2 className="card-title text-black">Graphic Design</h2>

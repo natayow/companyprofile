@@ -3,7 +3,7 @@ import { HiStar } from "react-icons/hi";
 
 export default function Testimonials() {
   return (
-    <section className="bg-white py-8 md:py-13 px-4 md:px-8">
+    <section className="bg-white py-8 md:py-13 px-4 md:px-8 items-center justify-center">
       <h1 className="text-[#141E32] text-2xl md:text-3xl font-bold text-center mb-4">
         Testimonials
       </h1>
