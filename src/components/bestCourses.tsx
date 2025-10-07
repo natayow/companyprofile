@@ -28,7 +28,7 @@ export default function BestCourses() {
 
                 <div className="flex justify-between items-center">
                   <p className="text-[#969696] font-extralight">
-                    Build responsive, modern websites with solid HTML and CSS
+                    Build responsive websites with solid HTML and CSS
                     foundations.
                   </p>
                 </div>
@@ -80,8 +80,7 @@ export default function BestCourses() {
 
                 <div className="flex justify-between items-center">
                   <p className="text-[#969696] font-extralight">
-                    Create interactive, dynamic websites with essential
-                    JavaScript skills.
+                    Create dynamic websites with essential JavaScript skills.
                   </p>
                 </div>
               </div>
