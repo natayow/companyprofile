@@ -14,7 +14,7 @@ type Props = {
 }
 
 export async function GET(
-  request: NextRequest,
+  _: NextRequest,
   { params }: Props
 ) {
   try {
