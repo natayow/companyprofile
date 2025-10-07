@@ -94,6 +94,7 @@ export default function TeamSection({ count = 6 }: { count?: number }) {
                       src={u.picture.large}
                       alt={name}
                       fill
+                      unoptimized
                       className="rounded-lg object-cover shadow-sm group-hover:shadow-md transition-shadow duration-300"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       priority={i < 2}
